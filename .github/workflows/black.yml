@@ -6,9 +6,9 @@ on:
   push:
     branches:
       - "**"
-  pull_request:
-    branches:
-      - "**"
+  # pull_request:
+  #   branches:
+  #     - "**"
   schedule:
     - cron: "0 0 * * *" # Run every day
   workflow_dispatch:
@@ -42,8 +42,8 @@ jobs:
       env:
         GH_TOKEN: ${{ secrets.GH_TOKEN }}
       run: |
-        git config --global user.email $UserEmail
-        git config --global user.name  $UserName
+        git config --global user.email $"{{git.global.user_email}}"
+        git config --global user.name "{{git.global.user_name}}"
         git remote set-url origin https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/${{ github.repository }}
         git pull origin main
         git add .
