@@ -2,3 +2,44 @@
 formats = "ipynb,py:light"
 cell_metadata_filter = "-all"
 notebook_metadata_filter = "-all"
+
+[tool.flake8]
+max-line-length = 79 
+ignore = [
+    "E203",  # Ignore whitespace before ':'
+    "E266",  # Too many leading '#' for block comment
+    "W503",  # Line break before binary operator
+]
+exclude = [
+    "__pycache__",
+    ".git",
+    "venv",
+    "build",
+    "dist",
+]  # Исключить эти директории из проверки
+
+[tool.pylint]
+# Настройки для pylint
+max-line-length = 79  # Максимальная длина строки
+disable = [
+    "C0114",  # Missing module docstring
+    "C0115",  # Missing class docstring
+    "C0116",  # Missing function or method docstring
+]
+ignore = [
+    "tests",  # Игнорировать папку тестов
+]
+good-names = [
+    "i",
+    "j"
+]
+
+[tool.pylint.messages-control]
+enable = [
+    "E",  # Enable all errors
+    "W",  # Enable all warnings
+    "C",  # Enable all conventions
+]
+disable = [
+    "R",  # Disable refactoring messages
+]
